@@ -1,0 +1,16 @@
+# Auto-generated corpus files
+corpus-generated/
+
+# Fuzzer binaries
+fuzz_sni_parsing
+fuzz_pkcs12
+fuzz_bio_operations
+fuzz_handshake
+
+# Fuzzer output
+logs/
+crashes/
+*.log
+
+# libFuzzer temporary files
+fuzz-*.log

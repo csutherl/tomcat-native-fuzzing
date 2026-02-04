@@ -1,0 +1,26 @@
+# Fuzzing artifacts
+fuzz/corpus-generated/
+fuzz/logs/
+fuzz/crashes/
+fuzz/scripts/fuzz_*
+!fuzz/scripts/*.sh
+fuzz-*.log
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+.libs/
+.deps/
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

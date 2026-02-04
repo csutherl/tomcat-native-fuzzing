@@ -1,0 +1,58 @@
+# TLS record type markers
+# TLS 1.0 Handshake
+"\x16\x03\x01"
+# TLS 1.2 Handshake
+"\x16\x03\x03"
+# TLS 1.3 Handshake
+"\x16\x03\x04"
+# Change Cipher Spec
+"\x14\x03\x03"
+# Alert
+"\x15\x03\x03"
+# Application Data
+"\x17\x03\x03"
+
+# TLS extension types
+# SNI extension type
+"\x00\x00"
+# ALPN extension
+"\x00\x10"
+# Signature Algorithms
+"\x00\x0d"
+# Supported Groups
+"\x00\x0a"
+# Supported Versions (TLS 1.3)
+"\x00\x2b"
+# Key Share
+"\x00\x33"
+
+# Cipher suites
+# ECDHE-ECDSA-AES128-GCM-SHA256
+"\xc0\x2b"
+# ECDHE-RSA-AES128-GCM-SHA256
+"\xc0\x2f"
+# TLS_AES_128_GCM_SHA256
+"\x13\x01"
+# TLS_AES_256_GCM_SHA384
+"\x13\x02"
+# TLS_CHACHA20_POLY1305_SHA256
+"\x13\x03"
+
+# Common hostnames for SNI
+"localhost"
+"example.com"
+"www.example.com"
+"tomcat.apache.org"
+"*.example.com"
+
+# Common ALPN protocols
+"http/1.1"
+"h2"
+"h3"
+
+# Length markers
+"\x00\x00"
+"\x00\x01"
+"\x00\x10"
+"\x00\xff"
+"\xff\xff"

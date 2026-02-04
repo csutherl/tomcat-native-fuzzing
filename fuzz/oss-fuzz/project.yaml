@@ -1,0 +1,15 @@
+homepage: "https://tomcat.apache.org/native-doc/"
+language: c
+primary_contact: "dev@tomcat.apache.org"
+auto_ccs:
+  - "security@apache.org"
+sanitizers:
+  - address
+  - undefined
+  - memory
+main_repo: "https://github.com/apache/tomcat-native.git"
+vendor_ccs:
+  - "private@tomcat.apache.org"
+architectures:
+  - x86_64
+file_github_issue: true
