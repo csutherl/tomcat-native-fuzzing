@@ -1,0 +1,36 @@
+diff --git a/.gitignore b/.gitignore
+index a4e21e5d3..27dff3b86 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -20,6 +20,7 @@
+ /native/build/ltmain.sh
+ /native/build/rules.mk
+ /native/aclocal.m4
++/native/autom4te.cache
+ /native/config.log
+ /native/config.nice
+ /native/config.status
+diff --git a/native/configure.ac b/native/configure.ac
+index 64d221899..5e68af739 100644
+--- a/native/configure.ac
++++ b/native/configure.ac
+@@ -145,6 +145,19 @@ AC_ARG_ENABLE(insecure-export-ciphers,
+   esac
+ ])
+ 
++AC_ARG_ENABLE(fuzzing,
++[AS_HELP_STRING([--enable-fuzzing],[enable fuzzing builds with libFuzzer (default is disabled)])],
++[
++  case "${enableval}" in
++    yes )
++       APR_ADDTO(CFLAGS, [-fsanitize=fuzzer,address,undefined])
++       APR_ADDTO(CFLAGS, [-fprofile-instr-generate -fcoverage-mapping])
++       APR_ADDTO(LDFLAGS, [-fsanitize=fuzzer,address,undefined])
++       AC_MSG_WARN([Enabling fuzzing build with libFuzzer, AddressSanitizer, and UndefinedBehaviorSanitizer])
++       ;;
++  esac
++])
++
+ dnl
+ dnl  Find the OpenSSL installation
+ dnl

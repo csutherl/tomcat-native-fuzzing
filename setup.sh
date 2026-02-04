@@ -45,6 +45,19 @@ fi
 echo "✓ Submodule updated"
 echo
 
+# Apply fuzzing support patch
+echo "Applying fuzzing support patch..."
+cd "$REPO_ROOT/tomcat-native"
+
+# Check if patch is already applied
+if ! grep -q "enable-fuzzing" native/configure.ac 2>/dev/null; then
+    patch -p1 < "$REPO_ROOT/fuzzing-support.patch"
+    echo "✓ Fuzzing support patch applied"
+else
+    echo "✓ Fuzzing support already enabled"
+fi
+echo
+
 # Build tomcat-native (normal build, not fuzzing)
 echo "Configuring tomcat-native..."
 cd "$REPO_ROOT/tomcat-native/native"

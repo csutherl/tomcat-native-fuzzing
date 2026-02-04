@@ -116,6 +116,36 @@ cd fuzz/scripts
 
 This checks prerequisites, build configuration, and runs short fuzzing tests.
 
+## Fuzzing Support Patch
+
+The fuzzing build requires a patch to tomcat-native's build system to add `--enable-fuzzing` support. This patch is not yet committed to the upstream Apache Tomcat Native project.
+
+The patch (`fuzzing-support.patch`) is **automatically applied** by `setup.sh` and adds:
+- **libFuzzer** instrumentation
+- **AddressSanitizer** for memory error detection
+- **UndefinedBehaviorSanitizer** for undefined behavior detection
+- **Coverage instrumentation** for corpus minimization
+- Gitignore entry for `autom4te.cache/` build artifacts
+
+### Manual Patch Application
+
+If you need to apply the patch manually (outside of setup.sh):
+
+```bash
+cd tomcat-native
+patch -p1 < ../fuzzing-support.patch
+```
+
+### Reverting the Patch
+
+To restore tomcat-native to a clean upstream state:
+
+```bash
+cd tomcat-native
+git checkout .gitignore native/configure.ac
+rm -rf native/autom4te.cache
+```
+
 ## Syncing with Upstream
 
 Update the tomcat-native submodule to the latest version:
